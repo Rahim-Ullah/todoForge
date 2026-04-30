@@ -7,3 +7,15 @@ export const api = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+api.interceptors.response.use(undefined, (error) => {
+  if (error.response) {
+    const { status } = error.response;  
+
+    if (status === 401) {
+      localStorage.removeItem('token');
+      window.location.href = '/login';
+    }
+  }
+  return Promise.reject(error);
+})

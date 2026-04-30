@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage"
 import Dashboard  from "./pages/Dashboard"
 import NotFound from "./pages/NotFound"
 import ProtectedRoute from "./routes/ProtectedRoute"
+import PublicRoute from "./routes/PublicRoute"
 
 
 
@@ -17,15 +18,17 @@ const App = () => {
 
       <Routes>
         
-        <Route path="/signup" element={<SignupPage />}/>
-        <Route path="/login" element={<LoginPage />}/>
-        <Route path="/" element={<HomePage/>}/>
+        <Route path='/' element={<PublicRoute />} >
+          <Route index element={<HomePage />} />
+          <Route path="signup" element={<SignupPage />} />
+          <Route path="login" element={<LoginPage />} />
+        </Route>
         <Route path="/dashboard" element=
             {<ProtectedRoute>
                 <Dashboard/>
             </ProtectedRoute>}
           />
-          <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </ThemeProvider>
     

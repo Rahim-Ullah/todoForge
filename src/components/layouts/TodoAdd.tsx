@@ -13,6 +13,7 @@ import {
 import { Field, FieldGroup } from "../ui/field"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
+import { Textarea } from "../ui/textarea"
 
 
 export function DialogDemo() {
@@ -24,20 +25,19 @@ export function DialogDemo() {
         </DialogTrigger>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>
-            <DialogTitle>Edit profile</DialogTitle>
+            <DialogTitle>Create Todo</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
+              Fill in the details for your new todo.
             </DialogDescription>
           </DialogHeader>
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Title</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+              <Input id="name-1" name="name" placeholder="Todo title" />
             </Field>
             <Field>
-              <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
+              <Label htmlFor="textarea-1">Description</Label>
+              <Textarea id="textarea-1" name="description" placeholder="Todo description"/>
             </Field>
           </FieldGroup>
           <DialogFooter>

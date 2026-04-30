@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { use, useState } from "react"
 import type { LoginPayLoad, RegisterPayLoad } from "../types/auth.types"
 import { loginUser, registerUser } from "../apis/auth"
+import { useNavigate } from "react-router-dom"
 
 const Token_Key = "token"
 
@@ -23,6 +24,8 @@ export const useAuth=()=>{
 
     const [user ,setUser] = useState<any>(null)
     const [loading , setLoading] = useState(false)
+
+    const navigate = useNavigate();
 
 
     const register = async (data : RegisterPayLoad) =>{
@@ -59,7 +62,8 @@ export const useAuth=()=>{
 
     const logout =()=>{
         removeToken()
-        setUser(null)
+        setUser(null);
+        navigate("/login");
     }
     return {
         user,
