@@ -1,4 +1,4 @@
-import { use, useState } from "react"
+import { useState } from "react"
 import type { LoginPayLoad, RegisterPayLoad } from "../types/auth.types"
 import { loginUser, registerUser } from "../apis/auth"
 import { useNavigate } from "react-router-dom"
@@ -34,7 +34,8 @@ export const useAuth=()=>{
             const response = await registerUser(data)
 
             if (response?.statusCode){
-                setToken(response.data.accessToken)
+                if(response?.data)
+                    setToken(response.data.accessToken)
             }
             return response
         }
